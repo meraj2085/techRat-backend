@@ -6,7 +6,8 @@ import { ProductService } from "./product.service";
 
 const getProducts: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await ProductService.getProducts();
+    const { category } = req.params;
+    const result = await ProductService.getProducts(category);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

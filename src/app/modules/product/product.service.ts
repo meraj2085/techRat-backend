@@ -11,8 +11,8 @@ const getRandomProducts = async (): Promise<IProduct[] | null> => {
   return randomProducts;
 };
 
-const getProducts = async (): Promise<IProduct[] | null> => {
-  const products = await Product.find();
+const getProducts = async (category: string): Promise<IProduct[] | null> => {
+  const products = await Product.find({ category });
   return products;
 };
 
