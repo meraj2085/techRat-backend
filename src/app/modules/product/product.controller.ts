@@ -17,6 +17,19 @@ const getProducts: RequestHandler = catchAsync(
   }
 );
 
+const getSingleProduct: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const result = await ProductService.getSingleProduct(id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Product fetched successfully",
+      data: result,
+    });
+  }
+);
+
 const getRandomProducts: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await ProductService.getRandomProducts();
@@ -45,5 +58,6 @@ const addProduct: RequestHandler = catchAsync(
 export const ProductController = {
   getProducts,
   getRandomProducts,
+  getSingleProduct,
   addProduct,
 };
