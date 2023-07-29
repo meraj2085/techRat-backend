@@ -30,6 +30,18 @@ const productSchema = new Schema<IProduct>(
         "Monitor",
       ],
     },
+    category_name: {
+      type: String,
+      required: true,
+      enum: [
+        "CPU / Processor",
+        "Motherboard",
+        "RAM",
+        "Power Supply Unit",
+        "Storage Device",
+        "Monitor",
+      ],
+    },
     status: {
       type: String,
       required: true,
